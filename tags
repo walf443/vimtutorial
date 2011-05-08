@@ -1,0 +1,6 @@
+ex_delete	delete.jax	/*ex_delete*
+ex_change	change.jax	/*ex_change*
+ex_replace	replace.jax	/*ex_replace*
+ex_textobj	textobj.jax	/*ex_textobj*
+ex_visual_line	visual.jax	/*ex_visual_line*
+ex_visual_block	visual.jax	/*ex_visual_block*

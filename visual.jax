@@ -1,0 +1,22 @@
+# vim: set ft=help :
+* ビジュアルモード	*ex_visual_line*
+
+<V>
+じゅげむじゅげむ
+ごこうのすりきれ
+はいぽはいぽ
+ふうらいまつの
+
+* ビジュアルモード	*ex_visual_block*
+
+まとめてコメントアウト
+<C-v3jI# <ESC>>
+sub hoge {
+    my $self- shift;
+}
+
+行末に追加してやる
+<C-v2jA|<ESC>>
+|aaaaaaaaa
+|bbbbbbbbb
+

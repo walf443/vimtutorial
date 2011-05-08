@@ -1,0 +1,139 @@
+# vim: set ft=help :
+#
+----
+* Vimの使い方
+- 資料の読み方
+|参照| : <:h 参照>とかで検索すると詳細な説明が引けます
+|ex_資料| : 例題ファイルを開いて具体的に説明します
+<キー> : 入力例です。
+
+----
+* モードという考え方 |vim-modes|
+- 編集モード <ESC>
+- ビジュアルモード <v> <V> <CTRL-V>
+- INSERTモード <i>, <a>
+- コマンドラインモード <:>, </>, <?>
+とりあえず困ったらESCを連打すればノーマルモードになる
+ESCは、<CTRL-[>でもOK。大抵は指がESCには届かないので<CTRL-[>を練習するがよろし
+
+----
+* 編集モード |Normal-mode|
+- テキストを編集するためのモード
+----
+* 移動 |motion|
+- ご存知<j>, <k>, <h>, <l>で、上下左右移動
+- 他にも色々移動方法はある。
+- 行頭 <^> / 行末 <$>
+- wbでより早く横移動する
+- motionの前には数字をつけることができる(ex. <3j>)
+- %で対応する括弧へ飛ぶ
+- <CTRL-F> / <CTRL-B> でページ送り
+
+sub hoge {
+    my $self = shift;
+}
+
+----
+* 操作
+- delete <d{motion}>,<x>, <dd>, <D> |ex_delete|
+- change <c{motion}> |ex_change|
+- replace <r{char}>, <R> |ex_replace|
+
+----
+* motion以外にもテキストオブジェクトを操作することができる |ex_textobj|
+- a ... : <aw>, <a">, <a{>, <a[>, <at>
+- inner ... : <iw>, <i">, <i{>, <i[>,<it> 
+
+----
+* ビジュアルモード |vitual-mode|
+- 基本的には複数の何かに対して操作を行うためのモード。操作対象が反転される
+- ヘルプで調べるときは、<v_> とか頭につくやつで引けばでてくる
+- <v>: 文字単位。だいたい単位がわりあてられていることが多いのであまり使わない
+- <V>: 複数行選択。複数行まとめて消したりとか |ex_visual_line|
+- <CTRL-v>: 矩形選択。行頭/行末にまとめて追加したりとか |ex_visual_block|
+
+----
+* INSERTモード |insert-mode|
+- 文字を入力するモード (<i>, <a>)
+- ヘルプで調べるときは、<i_>とか頭につくやつで引けば出てくる
+- わりとシェルと同様に使えるショートカット多し
+- <CTRL-h>: <Backspace>の変わり
+- <CTRL-w>: 単語を削除
+- <CTRL-u>: 行の頭まで削除
+- インデント関連  <Tab> / <CTRL-D>
+- 動的略称展開: <CTRL-N> / <CTRL-P>
+- 特殊な補完: <CTRL-X_CTRL-F> |ins-completion|
+
+----
+* コマンドラインモード |mode-cmdline|
+- 色々なコマンドを入力するモード。他のモードよりはとっつきやすいかも
+- ヘルプで調べるときは、:コマンド で実行できるコマンドを調べるか、c_キーで操作の仕方を調べることができる
+- <:q[uit]>
+- <:e[dit] ++enc=utf8> うまく文字コードの判定がいかなかったときにutf8で開きなおす
+- <:s[ubstitute]/{pattern}/{string}/[flags] 置換 |ex_substitute|
+- 行頭 / 行末 <CTRL-B> / <CTRL-E>
+
+----
+* ウィンドウの操作 |window|
+- 他のソースを参照しつつ書いたりするときに必要
+- <CTRL-W_j>, <CTRL-W_k>, <CTRL-W_h>, <CTRL-W_l> 上下左右へ移動
+- <CTRL-W_s>: 分割
+- <CTRL-W_q>: 閉じる
+
+----
+* バッファの操作 |buffer|
+- vimのヘルプ等を読むために知っておくとよい
+- ジャンプする前へ戻る: <CTRL-O>
+- 戻ったのを戻る: <CTRL-I>
+- タグジャンプ: <CTRL-]>
+
+----
+* 設定ファイルの作成 |vimrc|
+~/.vimrcにファイルを用意しておくと、起動時に設定ファイルが読まれるので自分好みに設定できる
+
+最低限だとこれくらいは設定しとくとよい
+
+filetype plugin indent on " filetypeプラグインを有効にする
+syntax enable " syntaxハイライトを有効に
+" だいたい日本語のファイルをよいかんじで判定させるためのおまじない
+set fileencoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
+set encoding=utf-8
+set fileformats=unix,dos,mac
+
+----
+* filetype plugin
+- 有効にしておくと、開いたファイルからファイルの種類を判定し、それに応じた様々な設定ができる
+- 特定のファイルタイプのみで有効にしたい設定は~/.vim/after/ftplugin/$filetype.vimへ書くとよい
+- 意図したファイルタイプに判定されない場合、拡張子に応じて~/.vim/ftdetect/$filext.vimを用意しておく
+~/.vim/ftdetect/psgi.vim: 
+autocmd! BufReadPost *.psgi setfiletype perl
+" この場合、*.psgiのファイルを開いたらperlと判定させる
+
+----
+* プラグインの管理
+- pathogen.vim が今のところおすすめ
+- git submoduleで管理できるので更新が楽になる
+- vim 7.3より前だとものすごく起動が遅くなるので、コンパイルして入れるのがよいかも
+
+----
+* おすすめプラグイン
+- surround.vim
+- ref.vim
+- uniite.vim
+
+----
+* surround.vim
+- テキストオブジェクトにsurroundの操作を追加する
+- 'ほげ'を"ほげ"にしたい →<cs'">
+
+----
+* ref.vim
+- 色々な辞書を同じインターフェースで引ける
+- :Ref perldoc Teng
+- sでソースコードとトグルする
+
+----
+* unite.vim
+- バッファや最近使ったファイルから選択などのインターフェースを用意する
+

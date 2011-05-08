@@ -1,0 +1,15 @@
+# vim: set ft=help :
+* 削除                *ex_delete*
+
+<dw>
+this is  a pen
+
+<dd>
+あいうえお
+かきくけこ
+しすせそ
+
+<D>
+あいうえお
+かきくけこ
+しすせそ

@@ -1,0 +1,11 @@
+# vim: set ft=help :
+* 変更                *ex_replace*
+
+<r{char}>
+ABCD
+
+<R>
+あいうえお
+かきくけこ
+しすせそ
+
