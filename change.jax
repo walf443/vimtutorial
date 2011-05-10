@@ -1,15 +1,16 @@
 # vim: set ft=help :
+#
 * 変更                *ex_change*
 
 <cw>
 this is  a pen
 
-<dd>
+<CC>
 あいうえお
 かきくけこ
 しすせそ
 
-<D>
+<C>
 あいうえお
 かきくけこ
 しすせそ
