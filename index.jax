@@ -50,7 +50,7 @@ sub hoge {
 - ヘルプで調べるときは、<v_> とか頭につくやつで引けばでてくる
 - <v>: 文字単位。だいたい単位がわりあてられていることが多いのであまり使わない
 - <V>: 複数行選択。複数行まとめて消したりとか |ex_visual_line|
-- <CTRL-v>: 矩形選択。行頭/行末にまとめて追加したりとか |ex_visual_block|
+- <CTRL-v>: 矩形選択。行頭/行末にまとめて追加したりとか 
 
 ----
 * INSERTモード |insert-mode|
@@ -70,7 +70,7 @@ sub hoge {
 - ヘルプで調べるときは、:コマンド で実行できるコマンドを調べるか、c_キーで操作の仕方を調べることができる
 - <:q[uit]>
 - <:e[dit] ++enc=utf8> うまく文字コードの判定がいかなかったときにutf8で開きなおす
-- <:s[ubstitute]/{pattern}/{string}/[flags] 置換 |ex_substitute|
+- <:s[ubstitute]/{pattern}/{string}/[flags] 置換
 - 行頭 / 行末 <CTRL-B> / <CTRL-E>
 
 ----
